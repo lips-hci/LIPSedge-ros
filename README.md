@@ -56,3 +56,9 @@ $ cd ~/LIPSToF_ws
 $ ln -s src/openni2_camera/view.sh .
 $ ./view.sh
 ```
+
+* Select topic /camera/depth/image in rqt
+<img src="Screenshot_rqt_depth_image.png" width="300">
+
+* Select topic /camera/rgb/image_raw in rqt
+<img src="Screenshot_rqt_rgb_image_raw.png" width="300">
