@@ -62,3 +62,17 @@ $ ./view.sh
 
 * Select topic /camera/rgb/image_raw in rqt
 <img src="Screenshot_rqt_rgb_image_raw.png" width="300">
+
+#### NOTE: If you have problem with running rqt, try using image_view ####
+* To view Depth image
+```
+$ rosrun image_view image_view image:=/camera/depth/image
+```
+* To view IR image
+```
+$ rosrun image_view image_view image:=/camera/ir/image
+```
+* To view RGB image
+```
+$ rosrun image_view image_view image:=/camera/rgb/raw_image
+```
