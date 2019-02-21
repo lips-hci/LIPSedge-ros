@@ -26,6 +26,10 @@ For example:
 ```
 $ sudo dpkg -i ROS-libmodule-lips2_1.5.0.7_amd64.deb
 ```
+NOTE: LIPS SDK package requires OpenCV, please refer this Wiki [page](https://github.com/lips-hci/openni_linux/wiki#install-opencv).
+* If your OS is Ubuntu 14.04, you need OpenCV 2.4.11 (sources [2.4.11.zip](https://github.com/opencv/opencv/archive/2.4.11.zip)).
+* If your OS is Ubuntu 16.04, you need OpenCV 3.1.0 (sources [3.1.0.zip](https://github.com/opencv/opencv/archive/3.1.0.zip)).
+
 ### 4. Download openni 2.0 wrapper source ###
 This wrapper is modified to add support for video mode QQQVGA (80x60@30Hz).
 
