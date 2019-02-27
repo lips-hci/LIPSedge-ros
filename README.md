@@ -16,15 +16,22 @@ Make sure you have openni2 package installed
 $ sudo apt-get install libopenni2-0 libopenni2-dev
 ```
 ### 3. Download and install LIPS SDK with ROS support ###
-Download SDK package (.deb format) from [LIPS SDK](https://www.lips-hci.com/downloads/category)
-* Select your system: Ubuntu 14.04/16.04 (currently only 64bit version is supported)
+Download SDK package from [LIPS SDK](https://www.lips-hci.com/downloads/category)
+* Select your system: Ubuntu 16.04/14.04 (currently only 64-bit version is supported)
 * Select the Platform: ROS (openni2)
 
 Then install it to your system.
 
 For example:
+* If you get .deb package, type below command to install it to your Ubuntu OS.
 ```
 $ sudo dpkg -i ROS-libmodule-lips2_1.5.0.7_amd64.deb
+```
+* If you get .tar.gz package, just run install.sh and it will install libraries to system automatically.
+```
+$ tar -xzf LIPS-Linux-x64-OpenNI2.2.tar.gz
+$ cd LIPS-Linux-x64-OpenNI2.2
+$ ./install.sh
 ```
 NOTE: LIPS SDK package requires OpenCV, please refer this Wiki [page](https://github.com/lips-hci/openni_linux/wiki#install-opencv).
 * If your OS is Ubuntu 14.04, you need OpenCV 2.4.11 (sources [2.4.11.zip](https://github.com/opencv/opencv/archive/2.4.11.zip)).
