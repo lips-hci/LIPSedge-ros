@@ -7,4 +7,4 @@
 # To view Depth-IR
 #rosrun image_view image_view image:=/camera/depth/image &
 #rosrun image_view image_view image:=/camera/ir/image &
-rqt
+rqt_image_view
