@@ -2,41 +2,34 @@
 
 ### 1. Install the pre-required ROS packages ###
 
-* For Ubuntu 16.04 with ROS Kinetic
-```
-$ sudo apt-get install ros-kinetic-rgbd-launch
-```
-* For Ubuntu 14.04 with ROS Indigo
-```
-$ sudo apt-get install ros-indigo-rgbd-launch
-```
+Install ROS according to the version of Ubuntu: http://wiki.ros.org/ROS/Installation
+
 ### 2. Install openni2 packages for Ubuntu ###
 Make sure you have openni2 package installed
 ```
 $ sudo apt-get install libopenni2-0 libopenni2-dev
 ```
 ### 3. Download and install LIPS SDK with ROS support ###
-Please download [LIPS ROS (openni2) .deb install package](https://filebox.lips-hci.com/index.php/s/s5cpGa1fORNrZzc)
+Download link: [LIPS SDK (openni2)](https://filebox.lips-hci.com/index.php/s/hFZwjnwdM68g4lg)
 
 NOTE:
-* system requirement: Ubuntu 16.04/14.04 (currently only 64-bit version is supported)
+* system requirement: Ubuntu 18.04/16.04 or later (currently only 64-bit version is supported)
 
 Then install it to your system.
 
 For example:
-* If you get .deb package, type below command to install it to your Ubuntu OS.
-```
-$ sudo dpkg -i ROS-libmodule-lips2_1.5.0.7_amd64.deb
-```
-* If you get .tar.gz package, just run install.sh and it will install libraries to system automatically.
+* Run install.sh and it will install libraries to system automatically.
 ```
 $ tar -xzf LIPS-Linux-x64-OpenNI2.2.tar.gz
 $ cd LIPS-Linux-x64-OpenNI2.2
 $ ./install.sh
 ```
 NOTE: LIPS SDK package requires OpenCV, please refer this Wiki [page](https://github.com/lips-hci/openni_linux/wiki#install-opencv).
-* If your OS is Ubuntu 14.04, you need OpenCV 2.4.11 (sources [2.4.11.zip](https://github.com/opencv/opencv/archive/2.4.11.zip)).
-* If your OS is Ubuntu 16.04, you need OpenCV 3.1.0 (sources [3.1.0.zip](https://github.com/opencv/opencv/archive/3.1.0.zip)).
+
+* Install OpenCV 3.4.1 (sources [3.4.1.zip](https://github.com/opencv/opencv/archive/3.4.1.zip)).
+
+*You can install OpenCV 3.4.1 via running provided script opencv3.4.1_installation_in_linux.sh
+
 
 ### 4. Download openni 2.0 wrapper source ###
 This wrapper is modified to add support for video mode QQQVGA (80x60@30Hz).
@@ -76,6 +69,7 @@ $ ./view.sh
 <img src="Screenshot_rqt_rgb_image_raw.png" width="300">
 
 #### NOTE: If you have problem with running rqt, try using image_view ####
+
 * To view Depth image
 ```
 $ rosrun image_view image_view image:=/camera/depth/image
