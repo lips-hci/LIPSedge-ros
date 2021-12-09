@@ -80,5 +80,5 @@ $ rosrun image_view image_view image:=/camera/ir/image
 ```
 * To view RGB image
 ```
-$ rosrun image_view image_view image:=/camera/rgb/raw_image
+$ rosrun image_view image_view image:=/camera/rgb/image_raw
 ```

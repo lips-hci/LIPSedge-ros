@@ -12,9 +12,9 @@
             '#1'  : the first device found
             '2@X' : the Xth device on USB bus 2"/>
 
-  <arg name="id_manufacturer" default="2df2"
+  <arg name="id_manufacturer" default="2aad"
        doc="Vendor ID of the sensor (maintained at http://www.linux-usb.org/usb-ids.html). Default: LIPS."/>
-  <arg name="id_product" default="0215"
+  <arg name="id_product" default="6373"
        doc="Product ID of the sensor. Default: LIPSedge SL."/>
 
   <arg name="rgb_camera_info_url"   default=""

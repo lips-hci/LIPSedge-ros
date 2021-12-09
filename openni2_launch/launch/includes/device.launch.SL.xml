@@ -13,9 +13,9 @@
   <arg name="rgb_camera_info_url" />
   <arg name="depth_camera_info_url" />
 
-  <arg name="ir_mode" default="14" />
-  <arg name="color_mode" default="5" />
-  <arg name="depth_mode" default="14" />
+  <arg name="ir_mode" default="15" />
+  <arg name="color_mode" default="16" />
+  <arg name="depth_mode" default="15" />
   <arg name="depth_registration" default="true" />
   <arg name="color_depth_synchronization" default="false" />
   <arg name="auto_exposure" default="true"
