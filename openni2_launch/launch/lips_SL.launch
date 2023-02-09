@@ -12,10 +12,10 @@
             '#1'  : the first device found
             '2@X' : the Xth device on USB bus 2"/>
 
-  <arg name="id_manufacturer" default="2aad"
+  <arg name="id_manufacturer" default="3558"
        doc="Vendor ID of the sensor (maintained at http://www.linux-usb.org/usb-ids.html). Default: LIPS."/>
-  <arg name="id_product" default="6373"
-       doc="Product ID of the sensor. Default: LIPSedge SL."/>
+  <arg name="id_product" default="1103"
+       doc="Product ID of the sensor. Default: LIPSedge L Series."/>
 
   <arg name="rgb_camera_info_url"   default=""
        doc="By default, calibrations are stored to file://${ROS_HOME}/camera_info/${NAME}.yaml,
