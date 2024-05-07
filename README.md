@@ -1,4 +1,8 @@
-# ROS openni 2.0 wrapper for LIPSedge DL/M3 ToF cameras #
+# ROS openni2 wrapper for LIPSedge DL/M3 ToF cameras #
+
+In this page we provided examples using LIPSedge DL/M3 camera.
+
+Contact LIPS for more LIPSedge camera support or check our wrapper for ROS2 [LIPSedge-ros2](https://github.com/lips-hci/LIPSedge-ros2).
 
 ### 1. Install the pre-required ROS packages ###
 
@@ -24,14 +28,14 @@ $ tar -xzf LIPS-Linux-x64-OpenNI2.2.tar.gz
 $ cd LIPS-Linux-x64-OpenNI2.2
 $ ./install.sh
 ```
-NOTE: LIPS SDK package requires OpenCV, please refer this Wiki [page](https://github.com/lips-hci/openni_linux/wiki#install-opencv).
+NOTE: LIPS SDK package may require OpenCV, please refer this Wiki [page](https://github.com/lips-hci/openni_linux/wiki#install-opencv).
 
 * Install OpenCV 3.4.1 (sources [3.4.1.zip](https://github.com/opencv/opencv/archive/3.4.1.zip)).
 
 *You can install OpenCV 3.4.1 via running provided script opencv3.4.1_installation_in_linux.sh
 
 
-### 4. Download openni 2.0 wrapper source ###
+### 4. Download openni2 wrapper source ###
 This wrapper is modified to add support for video mode QQQVGA (80x60@30Hz).
 
 You have to rebuild and install it on your ROS
