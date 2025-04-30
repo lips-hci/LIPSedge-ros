@@ -262,7 +262,6 @@ void OpenNI2Driver::setDepthVideoMode(const OpenNI2VideoMode& depth_video_mode)
 
 void OpenNI2Driver::applyConfigToOpenNIDevice()
 {
-
   data_skip_ir_counter_ = 0;
   data_skip_color_counter_= 0;
   data_skip_depth_counter_ = 0;
@@ -315,33 +314,35 @@ void OpenNI2Driver::applyConfigToOpenNIDevice()
     ROS_ERROR("Could not set auto white balance. Reason: %s", exception.what());
   }
 
-
-  // Workaound for https://github.com/ros-drivers/openni2_camera/issues/51
-  // This is only needed when any of the 3 setting change.  For simplicity
-  // this check is always performed and exposure set.
-  if( (!auto_exposure_ && !auto_white_balance_) && exposure_ != 0 )
+  if (!auto_exposure_)
   {
-    ROS_INFO_STREAM("Forcing exposure set, when auto exposure/white balance disabled");
-    forceSetExposure();
-  }
-  else
-  {
-    // Setting the exposure the old way, although this should not have an effect
-    try
+    if (!auto_white_balance_ && exposure_ != 0)
     {
-      if (!config_init_ || (old_config_.exposure != exposure_))
-        device_->setExposure(exposure_);
+      // Workaound for https://github.com/ros-drivers/openni2_camera/issues/51
+      // This is only needed when any of the 3 setting change.  For simplicity
+      // this check is always performed and exposure set.
+      ROS_INFO_STREAM("Forcing exposure set, when auto exposure/white balance disabled");
+      forceSetExposure();
     }
-    catch (const OpenNI2Exception& exception)
+    else
     {
-      ROS_ERROR("Could not set exposure. Reason: %s", exception.what());
+      // Setting the exposure the old way, although this should not have an effect
+      try
+      {
+        if ((!config_init_ || old_config_.exposure != exposure_) && exposure_ != 0)
+        {
+          device_->setExposure(exposure_);
+        }
+      }
+      catch (const OpenNI2Exception& exception)
+      {
+        ROS_ERROR("Could not set exposure. Reason: %s", exception.what());
+      }
     }
   }
 
   device_->setUseDeviceTimer(use_device_time_);
 }
-
-
 
 void OpenNI2Driver::forceSetExposure()
 {
