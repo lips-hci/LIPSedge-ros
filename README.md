@@ -1,19 +1,28 @@
-# ROS openni2 wrapper for LIPSedge DL/M3 ToF cameras #
+# ROS openni2 wrapper for LIPSedge DL/M3 ToF cameras
 
-In this page we provided examples using LIPSedge DL/M3 camera.
+In this page we provided examples using LIPSedge DL/M3 camera. Contact us if you want more LIPSedge camera support.
 
-Contact LIPS for more LIPSedge camera support or check our wrapper for ROS2 [LIPSedge-ros2](https://github.com/lips-hci/LIPSedge-ros2).
+LIPSedge camera ROS2 wrapper [LIPSedge-ros2](https://github.com/lips-hci/LIPSedge-ros2).
 
-### 1. Install the pre-required ROS packages ###
+1. [Install pre-required ROS packages](README.md#Install-the-pre-required-ROSpackages)
+2. [Install openni2 packages](README.md#Install-openni2-packages-for-Ubuntu)
+3. [Download LIPS camera SDK](README.md#Download-and-install-LIPS-SDK-with-ROS-support)
+4. [Download openni2 wrapper source](README.md#Download-openni2-wrapper-source)
+5. [Build and launch](README.md#Build-and-launch-services)
+6. [Launch rqt viewer](README.md#Launch-viewer-to-check-depth/ir/rgb-images)
+7. [Troubleshooting](Troubleshooting.md)
+
+
+### 1. Install the pre-required ROS packages
 
 Install ROS according to the version of Ubuntu: http://wiki.ros.org/ROS/Installation
 
-### 2. Install openni2 packages for Ubuntu ###
+### 2. Install openni2 packages for Ubuntu
 Make sure you have openni2 package installed
 ```
 $ sudo apt-get install libopenni2-0 libopenni2-dev
 ```
-### 3. Download and install LIPS SDK with ROS support ###
+### 3. Download and install LIPS SDK with ROS support
 Download link: [LIPS SDK (openni2)](https://filebox.lips-hci.com/index.php/s/hFZwjnwdM68g4lg)
 
 NOTE:
@@ -35,7 +44,7 @@ NOTE: LIPS SDK package may require OpenCV, please refer this Wiki [page](https:/
 *You can install OpenCV 3.4.1 via running provided script opencv3.4.1_installation_in_linux.sh
 
 
-### 4. Download openni2 wrapper source ###
+### 4. Download openni2 wrapper source
 This wrapper is modified to add support for video mode QQQVGA (80x60@30Hz).
 
 You have to rebuild and install it on your ROS
@@ -45,7 +54,7 @@ $ cd ~/LIPSToF_ws/src
 $ catkin_init_workspace
 $ git clone https://github.com/lips-hci/openni2_camera
 ```
-### 5. Build and launch services ###
+### 5. Build and launch services
 * For LIPSedge DL ToF camera
 ```
 $ cd ~/LIPSToF_ws
