@@ -5,21 +5,17 @@ In this page we provided examples using LIPSedge™ DL/M3 camera.
 NOTE: if you are using ROS2, here is our ROS2 wrapper installation guide. [LIPSedge-ros2](https://github.com/lips-hci/LIPSedge-ros2)
 
 1. [Install dependent packages](#install-dependent-packages)
-2. [Install lib openni2 packages](#install-lib-openni2-packages)
-3. [Install LIPSedge camera SDK](#install-lipsedge-camera-sdk)
-4. [Get openni2 wrapper source](#get-openni2-wrapper-source)
-5. [Build wrapper and launch openni2_camera](#build-wrapper-and-launch-openni2_camera)
-6. [Launch rqt viewer](#launch-rqt-viewer)
-7. [Troubleshooting](Troubleshooting.md)
+2. [Install LIPSedge camera SDK](#install-lipsedge-camera-sdk)
+3. [Get openni2 wrapper source](#get-openni2-wrapper-source)
+4. [Build wrapper and launch openni2_camera](#build-wrapper-and-launch-openni2_camera)
+5. [Launch rqt viewer](#launch-rqt-viewer)
+6. [Troubleshooting](Troubleshooting.md)
 
 ### Install dependent packages
 
-Install ROS according to the version of Ubuntu: http://wiki.ros.org/ROS/Installation
+- ros: setup ROS environment according to your Ubuntu distro: http://wiki.ros.org/ROS/Installation
 
-### Install lib openni2 packages
-
-Make sure you have openni2 package installed
-
+- openni2: make sure lib openni2 package is installed
 ```
 $ sudo apt-get install libopenni2-0 libopenni2-dev
 ```
