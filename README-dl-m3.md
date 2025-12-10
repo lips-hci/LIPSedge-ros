@@ -4,19 +4,19 @@ In this page we provided examples using LIPSedge™ DL/M3 camera.
 
 NOTE: if you are using ROS2, here is our ROS2 wrapper installation guide. [LIPSedge-ros2](https://github.com/lips-hci/LIPSedge-ros2)
 
-1. [Install pre-required ROS packages](#install-dependent-packages)
+1. [Install dependent packages](#install-dependent-packages)
 2. [Install lib openni2 packages](#install-lib-openni2-packages)
 3. [Install LIPSedge camera SDK](#install-lipsedge-camera-sdk)
 4. [Get openni2 wrapper source](#get-openni2-wrapper-source)
-5. [Build and launch](#build-and-launch-services)
+5. [Build wrapper and launch openni2_camera](#build-wrapper-and-launch-openni2_camera)
 6. [Launch rqt viewer](#launch-rqt-viewer)
 7. [Troubleshooting](Troubleshooting.md)
 
-### 1. Install dependent packages
+### Install dependent packages
 
 Install ROS according to the version of Ubuntu: http://wiki.ros.org/ROS/Installation
 
-### 2. Install lib openni2 packages
+### Install lib openni2 packages
 
 Make sure you have openni2 package installed
 
@@ -24,7 +24,7 @@ Make sure you have openni2 package installed
 $ sudo apt-get install libopenni2-0 libopenni2-dev
 ```
 
-### 3. Install LIPSedge camera SDK
+### Install LIPSedge camera SDK
 
 Download LIPSedge™ DL/M3: [SDK (openni2 compliant)](https://filebox.lips-hci.com/index.php/s/hFZwjnwdM68g4lg)
 
@@ -47,42 +47,42 @@ NOTE: LIPSedge™ SDK package may require OpenCV, please refer this Wiki [page](
 *You can install OpenCV 3.4.1 via running provided script opencv3.4.1_installation_in_linux.sh
 
 
-### 4. Get openni2 wrapper source
+### Get openni2 wrapper source
 This wrapper is modified to add support for video mode QQQVGA (80x60@30Hz).
 
 You have to rebuild and install it on your ROS
 
 ```
-$ mkdir -p ~/LIPSToF_ws/src
-$ cd ~/LIPSToF_ws/src
+$ mkdir -p ~/LIPSedge_ws/src
+$ cd ~/LIPSedge_ws/src
 $ catkin_init_workspace
-$ git clone https://github.com/lips-hci/openni2_camera
+$ git clone https://github.com/lips-hci/LIPSedge-ros
 ```
 
-### 5. Build and launch services
+### Build wrapper and launch openni2_camera
 
-* For LIPSedge™ DL ToF camera
+* For LIPSedge™ DL camera
 
 ```
-$ cd ~/LIPSToF_ws
+$ cd ~/LIPSedge_ws
 $ ln -s src/openni2_camera/run_DL.sh .
 $ ./run_DL.sh
 ```
 
-* For LIPSedge™ M3 ToF camera
+* For LIPSedge™ M3 camera
 
 ```
-$ cd ~/LIPSToF_ws
+$ cd ~/LIPSedge_ws
 $ ln -s src/openni2_camera/run_M3.sh .
 $ ./run_M3.sh
 ```
 
-### 6. Launch rqt viewer
+### Launch rqt viewer
 
 Now you can check depth/ir/rgb images, make sure LIPSedge™ camera is already connected to your host PC.
 
 ```
-$ cd ~/LIPSToF_ws
+$ cd ~/LIPSedge_ws
 $ ln -s src/openni2_camera/view.sh .
 $ ./view.sh
 ```
