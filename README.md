@@ -1,20 +1,13 @@
-# openni2_camera
+# ROS openni2 wrapper for LIPSedge™ camera
 
-## Introduction
-ROS wrapper for openni 2.0
+First you can read original ros1 [readme](README-ros1.md) to find support of xtion devices (but not kinects).
 
-Note: openni2_camera supports xtion devices, but not kinects. For using a kinect with ROS, try the freenect stack: http://www.ros.org/wiki/freenect_stack
+Since ros1 is EOL, please move to LIPSedge™ camera ROS2 wrapper [LIPSedge-ros2](https://github.com/lips-hci/LIPSedge-ros2).
 
-## Contribution
+### LIPSedge™ DL/M3
+- [installation guide](README-dl-m3.md)
 
-Branching:
-- ROS1:
-   - Latest: [ros1](https://github.com/ros-drivers/openni2_camera/tree/ros1)
-   - For ROS [Jade](http://wiki.ros.org/jade), [Indigo](http://wiki.ros.org/indigo) or earlier: [indigo-devel](https://github.com/ros-drivers/openni2_camera/tree/indigo-devel)
-- ROS2: Not ported to ROS2.
+### LIPSedge™ T235 ToF camera
+- [installation guide](README-t235.md)
 
-## Developer document
-   - [docs.ros.org/openni2_launch](http://docs.ros.org/en/melodic/api/openni2_launch/html/)
-   - Source of the doc: [openni2_launch/doc](./openni2_launch/doc/)
-
-EoF
+Contact us if you need more LIPSedge™ camera support.
