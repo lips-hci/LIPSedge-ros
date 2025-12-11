@@ -1,92 +1,106 @@
-# LIPSedge™ camera T235 ROS wrapper
+# ROS wrapper for OpenNI2 using LIPSedge™ camera T235
 
-1. [Install pre-required ROS packages](README.md#Install-the-pre-required-ROSpackages)
-2. [Install openni2 packages](README.md#Install-openni2-packages-for-Ubuntu)
-3. [Download LIPS camera SDK](README.md#Download-and-install-LIPS-SDK-with-ROS-support)
-4. [Download openni2 wrapper source](README.md#Download-openni2-wrapper-source)
-5. [Build and launch](README.md#Build-and-launch-services)
-6. [Launch rqt viewer](README.md#Launch-viewer-to-check-depth/ir/rgb-images)
-7. [Troubleshooting](Troubleshooting.md)
+We have tested LIPSedge™ T235 camera in [ros1 noetic](https://hub.docker.com/r/osrf/ros/tags?name=noetic) docker container.
+For other distro, we are not sure, if you have any request or need any support. Please mail [LIPS](https://www.lips-hci.com/contact) us.
 
-### 1. Install the pre-required ROS packages
+1. [Installation](#installation)
+2. [Get wrapper source](#get-wrapper-source)
+3. [Build and run driver](#build-and-run-driver)
+4. [Launch rqt viewer](#launch-rqt-viewer)
+5. [Troubleshooting](Troubleshooting.md)
 
-Install ROS according to the version of Ubuntu: http://wiki.ros.org/ROS/Installation
+## Installation
 
-### 2. Install openni2 packages for Ubuntu
-Make sure you have openni2 package installed
+#### dependent packages
+
+ * Install openni2 packages
+ ```
+ $ sudo apt-get install libopenni2-0 libopenni2-dev
+ ```
+ 
+#### LIPSedge™ camera T235 SDK
+
+[Download](https://www.lips-hci.com/lipssdk) latest LIPSedge™ T235 SDK and install it.
 ```
-$ sudo apt-get install libopenni2-0 libopenni2-dev
+for example,
+$ chmod +x LIPSedge-T225-RGBD-SDK-Linux-amd64-2.4.4.3_v0.9.6.2.xz.run
+$ ./LIPSedge-T225-RGBD-SDK-Linux-amd64-2.4.4.3_v0.9.6.2.xz.run
 ```
-### 3. Download and install LIPS SDK with ROS support
-Download link: [LIPS SDK (openni2)](https://filebox.lips-hci.com/index.php/s/hFZwjnwdM68g4lg)
 
-NOTE:
-* system requirement: Ubuntu 18.04/16.04 or later (currently only 64-bit version is supported)
-
-Then install it to your system.
-
-For example:
-* Run install.sh and it will install libraries to system automatically.
+Follow steps on screen to finish installation or run below command to install SDK again.
 ```
-$ tar -xzf LIPS-Linux-x64-OpenNI2.2.tar.gz
-$ cd LIPS-Linux-x64-OpenNI2.2
-$ ./install.sh
+$ cd LIPSedge-T225-RGBD-SDK-Linux-amd64-2.4.4.3_v0.9.6.2
+$ sudo ./install.sh
 ```
-NOTE: LIPS SDK package may require OpenCV, please refer this Wiki [page](https://github.com/lips-hci/openni_linux/wiki#install-opencv).
 
-* Install OpenCV 3.4.1 (sources [3.4.1.zip](https://github.com/opencv/opencv/archive/3.4.1.zip)).
+## Get wrapper source
 
-*You can install OpenCV 3.4.1 via running provided script opencv3.4.1_installation_in_linux.sh
+Clone this repository and build it in ROS environment
 
-
-### 4. Download openni2 wrapper source
-This wrapper is modified to add support for video mode QQQVGA (80x60@30Hz).
-
-You have to rebuild and install it on your ROS
 ```
-$ mkdir -p ~/LIPSToF_ws/src
-$ cd ~/LIPSToF_ws/src
+$ mkdir -p ~/LIPSedge_ws/src
+$ cd ~/LIPSedge_ws/src
 $ catkin_init_workspace
-$ git clone https://github.com/lips-hci/openni2_camera
-```
-### 5. Build and launch services
-* For LIPSedge DL ToF camera
-```
-$ cd ~/LIPSToF_ws
-$ ln -s src/openni2_camera/run_DL.sh .
-$ ./run_DL.sh
-```
-* For LIPSedge M3 ToF camera
-```
-$ cd ~/LIPSToF_ws
-$ ln -s src/openni2_camera/run_M3.sh .
-$ ./run_M3.sh
-```
-### 6. Launch viewer to check depth/ir/rgb images ###
-Make sure LIPSedge ToF camera is already connected to your host PC.
-```
-$ cd ~/LIPSToF_ws
-$ ln -s src/openni2_camera/view.sh .
-$ ./view.sh
+$ git clone https://github.com/lips-hci/LIPSedge-ros1
 ```
 
-* Select topic /camera/depth/image in rqt
+#### Setup OpenNI Dev Environment
+
+Before running ros launch script, you have to deploy LIPSedge™ camera driver to system.
+```
+$ cd LIPSedge-T225-RGBD-SDK-Linux-amd64-2.4.4.3_v0.9.6.2
+$ source OpenNIDevEnvironment
+```
+
+Run helper script in ros workspace source.
+```
+$ cd ~/LIPSedge_ws/src
+$ ./scripts/install_ros_T235_ubuntu20_x64.sh
+SDK path found: /home/chengt/test/LIPSedge-T225-RGBD-SDK-Linux-amd64-2.4.4.3_v0.9.6.2/Redist
+Creating lib,calib,OpenNI2 links in /lib/x86_64-linux-gnu
+Finished.
+```
+
+Make sure LIPSedge™ T235 driver library has been installed to OpenNI2 Drivers repo in the system, you can see virtual link created for LIPSedge™ camera driver lib.
+```
+# ls -l /lib/x86_64-linux-gnu/OpenNI2/Drivers/
+```
+<img src="check_link_in_openni2_driver_repo.png" width="800">
+
+## Build and run driver
+
+```
+$ cd ~/LIPSedge_ws
+$ catkin_make
+$ source ./devel/setup.bash
+$ roslaunch openni2_launch lips_T235.launch
+```
+
+## Launch rqt viewer
+
+Connect LIPSedge camera to your host PC and use rqt to view stream topics.
+```
+$ cd ~/LIPSToF_ws
+$ rqt_image_view
+```
+
+* Select topic */camera/depth/image* in rqt
 <img src="Screenshot_rqt_depth_image.png" width="300">
 
-* Select topic /camera/rgb/image_raw in rqt
+* Select topic */camera/rgb/image_raw* in rqt
 <img src="Screenshot_rqt_rgb_image_raw.png" width="300">
 
-#### NOTE: If you have problem with running rqt, try using image_view ####
+#### OR you can try image_view if you got problem with running rqt.
 
-* To view Depth image
+* View Depth image
 ```
 $ rosrun image_view image_view image:=/camera/depth/image
 ```
-* To view IR image
+* View IR image
 ```
 $ rosrun image_view image_view image:=/camera/ir/image
 ```
-* To view RGB image
+* View RGB image
 ```
 $ rosrun image_view image_view image:=/camera/rgb/image_raw
 ```
