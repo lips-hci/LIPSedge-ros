@@ -46,21 +46,22 @@ elif [ -z "$1" ] && [ ! -z "${OPENNI2_REDIST}" ]; then
   SDK_ROOT="${OPENNI2_REDIST}"
   #printf "Wihtout arg\n"
 elif [ -z "$SDK_ROOT" ]; then
-  printf "Cannot find env variable 'OPENNI2_REDIST'. Please source the file OpenNIDevEnvironment in LIPSedge SDK"
+  printf "\nCannot find env variable 'OPENNI2_REDIST'. Please source the file OpenNIDevEnvironment in LIPSedge SDK.\n"
   show_usage
 else
   show_usage
 fi
 
-printf "SDK path found: ${SDK_ROOT}\n"
+printf "\nSDK path found: ${SDK_ROOT}\n"
 
 # Declare camera string
 DEVICE=T225-RGBD
 DEVICE_STRING=T225-RGBD
 
+#LIB_LD=/lib
 LIB_LD=/lib/x86_64-linux-gnu
 if [ -e $LIB_LD ] && [ ! -d "$LIB_LD/OpenNI2/Drivers" ]; then
-  printf "Cannot find OpenNI2 Drivers in /lib, maybe you can run 'apt install libopenni2-0 libopenni2-dev' to install missing packages."
+  printf "\nCannot find OpenNI2 Drivers in $LIB_LD, maybe you can run 'apt install libopenni2-0 libopenni2-dev' to install missing packages.\n"
   exit 1
 fi
 
@@ -73,7 +74,7 @@ function main() {
     # No links to OpenNI2/Drivers or calib/ after SDK v0.9.6.2
     #ln -sf $SDK_ROOT/OpenNI2 OpenNI2
     #ln -sf $SDK_ROOT/calib calib
-    printf "Creating lib,calib,OpenNI2 links in $LIB_LD"
+    printf "\nCreating lib,calib,OpenNI2 links in $LIB_LD\n"
   fi
 }
 
