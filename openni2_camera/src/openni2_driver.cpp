@@ -1115,6 +1115,13 @@ output_mode_enum = gen.enum([  gen.const(  "SXGA_30Hz", int_t, 1,  "1280x1024@30
 
   video_modes_lookup_[16] = video_mode;
 
+  // VGA_60Hz
+  video_mode.x_resolution_ = 640;
+  video_mode.y_resolution_ = 480;
+  video_mode.frame_rate_ = 60;
+
+  video_modes_lookup_[17] = video_mode;
+
 }
 
 int OpenNI2Driver::lookupVideoModeFromDynConfig(int mode_nr, OpenNI2VideoMode& video_mode)
