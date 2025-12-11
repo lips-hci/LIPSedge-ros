@@ -74,7 +74,7 @@ Make sure LIPSedge™ T235 driver library has been installed to OpenNI2 Drivers 
 $ cd ~/LIPSedge_ws
 $ catkin_make
 $ source ./devel/setup.bash
-$ roslaunch openni2_launch lips_T235.launch
+$ roslaunch openni2_launch lipsedge_T235.launch
 ```
 
 ## Launch rqt viewer
