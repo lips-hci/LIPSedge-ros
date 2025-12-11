@@ -19,9 +19,9 @@ For other distro, we are not sure, if you have any request or need any support. 
 $ sudo apt-get install libopenni2-0 libopenni2-dev
 ```
 
-* Install dependent ros packages
+* :point_right: Install runtime dependent ros packages
 ```
-$ sudo apt-get install -y ros-noetic-image-geometry ros-noetic-camera-info-manager
+$ sudo apt-get install -y ros-noetic-image-geometry ros-noetic-camera-info-manager ros-noetic-rgbd-launch
 ```
 
 #### LIPSedge™ camera T235 SDK
