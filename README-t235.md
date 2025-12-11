@@ -1,7 +1,8 @@
 # ROS wrapper for OpenNI2 using LIPSedge™ camera T235
 
 We have tested LIPSedge™ T235 camera in [ros1 noetic](https://hub.docker.com/r/osrf/ros/tags?name=noetic) docker container.
-For other distro, we are not sure, if you have any request or need any support. Please mail [LIPS](https://www.lips-hci.com/contact) us.
+
+For other distro, we are not sure, if you have any request or need any support. Please mail to [LIPS](https://www.lips-hci.com/contact).
 
 1. [Installation](#installation)
 2. [Get wrapper source](#get-wrapper-source)
