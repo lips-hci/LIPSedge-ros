@@ -14,23 +14,30 @@ For other distro, we are not sure, if you have any request or need any support. 
 
 #### dependent packages
 
- * Install openni2 packages
- ```
- $ sudo apt-get install libopenni2-0 libopenni2-dev
- ```
- 
+* Install openni2 packages
+```
+$ sudo apt-get install libopenni2-0 libopenni2-dev
+```
+
+* Install dependent ros packages
+```
+$ sudo apt-get install -y ros-noetic-image-geometry ros-noetic-camera-info-manager
+```
+
 #### LIPSedge™ camera T235 SDK
 
 [Download](https://www.lips-hci.com/lipssdk) latest LIPSedge™ T235 SDK and install it.
 ```
 for example,
-$ chmod +x LIPSedge-T225-RGBD-SDK-Linux-amd64-2.4.4.3_v0.9.6.2.xz.run
-$ ./LIPSedge-T225-RGBD-SDK-Linux-amd64-2.4.4.3_v0.9.6.2.xz.run
+$ cd ~/Downloads
+$ chmod +x LIPSedge-T225-RGBD-SDK-Linux-amd64-2.4.4.3_v0.9.6.3.xz.run
+$ ./LIPSedge-T225-RGBD-SDK-Linux-amd64-2.4.4.3_v0.9.6.3.xz.run
 ```
+Follow steps on screen to finish installation.
 
-Follow steps on screen to finish installation or run below command to install SDK again.
+*NOTE: If any error occurs during installation or you are not finished it, you can run it manually.*
 ```
-$ cd LIPSedge-T225-RGBD-SDK-Linux-amd64-2.4.4.3_v0.9.6.2
+$ cd LIPSedge-T225-RGBD-SDK-Linux-amd64-2.4.4.3_v0.9.6.3
 $ sudo ./install.sh
 ```
 
@@ -39,8 +46,8 @@ $ sudo ./install.sh
 Clone this repository and build it in ROS environment
 
 ```
-$ mkdir -p ~/LIPSedge_ws/src
-$ cd ~/LIPSedge_ws/src
+$ mkdir -p ~/workspace/src
+$ cd ~/workspace/src
 $ catkin_init_workspace
 $ git clone https://github.com/lips-hci/LIPSedge-ros1
 ```
@@ -48,30 +55,38 @@ $ git clone https://github.com/lips-hci/LIPSedge-ros1
 #### Setup OpenNI Dev Environment
 
 Before running ros launch script, you have to deploy LIPSedge™ camera driver to system.
+
+Go back to LIPSedge™ T235 SDK directory to run setup.
 ```
-$ cd LIPSedge-T225-RGBD-SDK-Linux-amd64-2.4.4.3_v0.9.6.2
+$ cd ~/Downloads
+$ cd LIPSedge-T225-RGBD-SDK-Linux-amd64-2.4.4.3_v0.9.6.3
 $ source OpenNIDevEnvironment
 ```
 
-Run helper script in ros workspace source.
+Run helper script in wrapper source to create virtual link to LIPSedge™ T235 camera driver.
 ```
-$ cd ~/LIPSedge_ws/src
+$ cd ~/workspace/src
+$ cd LIPSedge-ros1
 $ ./scripts/install_ros_T235_ubuntu20_x64.sh
-SDK path found: /home/chengt/test/LIPSedge-T225-RGBD-SDK-Linux-amd64-2.4.4.3_v0.9.6.2/Redist
-Creating lib,calib,OpenNI2 links in /lib/x86_64-linux-gnu
+
+SDK path found: /home/chengt/test/LIPSedge-T225-RGBD-SDK-Linux-amd64-2.4.4.3_v0.9.6.3/Redist
+
+Creating lib,calib,OpenNI2 links in /lib
+
 Finished.
 ```
 
-Make sure LIPSedge™ T235 driver library has been installed to OpenNI2 Drivers repo in the system, you can see virtual link created for LIPSedge™ camera driver lib.
+Make sure driver library has been installed to OpenNI2 Drivers repo in the system, you can see virtual link created for LIPSedge™ camera driver lib.
 ```
-# ls -l /lib/x86_64-linux-gnu/OpenNI2/Drivers/
+# ls -l /lib/OpenNI2/Drivers/
 ```
-<img src="check_link_in_openni2_driver_repo.png" width="800">
+<img src="ls-l-root-lib-openni2-drivers.png" width="800">
 
 ## Build and run driver
 
+Run catkin make in workspace.
 ```
-$ cd ~/LIPSedge_ws
+$ cd ~/workspace
 $ catkin_make
 $ source ./devel/setup.bash
 $ roslaunch openni2_launch lipsedge_T235.launch
