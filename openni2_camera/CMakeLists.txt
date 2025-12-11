@@ -21,7 +21,7 @@ catkin_package(
   INCLUDE_DIRS include
   LIBRARIES openni2_wrapper
   CATKIN_DEPENDS camera_info_manager dynamic_reconfigure image_transport nodelet sensor_msgs roscpp message_runtime
-  DEPENDS libopenni2
+  DEPENDS PC_OPENNI2
 )
 
 include_directories(include 
