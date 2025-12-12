@@ -7,7 +7,7 @@ For other distro, we are not sure, if you have any request or need any support. 
 1. [Installation](#installation)
 2. [Get wrapper source](#get-wrapper-source)
 3. [Build and run driver](#build-and-run-driver)
-4. [Launch rqt viewer](#launch-rqt-viewer)
+4. [Launch rqt_image_view](#launch-rqt-image-view)
 5. [Troubleshooting](Troubleshooting.md)
 
 ## Installation
@@ -24,7 +24,7 @@ $ sudo apt-get install libopenni2-0 libopenni2-dev
 $ sudo apt-get install -y ros-noetic-image-geometry ros-noetic-camera-info-manager ros-noetic-rgbd-launch
 ```
 
-#### LIPSedge™ camera T235 SDK
+#### LIPSedge™ T235 camera SDK
 
 [Download](https://www.lips-hci.com/lipssdk) latest LIPSedge™ T235 SDK and install it.
 ```
@@ -56,14 +56,14 @@ $ git clone https://github.com/lips-hci/LIPSedge-ros1
 
 Before running ros launch script, you have to deploy LIPSedge™ camera driver to system.
 
-Go back to LIPSedge™ T235 SDK directory to run setup.
+Go back to LIPSedge™ T235 SDK directory to setup OpenNI development environment.
 ```
 $ cd ~/Downloads
 $ cd LIPSedge-T225-RGBD-SDK-Linux-amd64-2.4.4.3_v0.9.6.3
 $ source OpenNIDevEnvironment
 ```
 
-Run helper script in wrapper source to create virtual link to LIPSedge™ T235 camera driver.
+Run helper script in wrapper source to create virtual link to LIPSedge™ camera driver.
 ```
 $ cd ~/workspace/src
 $ cd LIPSedge-ros1
@@ -86,7 +86,7 @@ Make sure driver library has been installed to OpenNI2 Drivers repo in the syste
 
 ## Build and run driver
 
-Run catkin make in workspace.
+Run catkin_make in workspace. DON'T forget to source **devel/setup.bash** before running launch.
 ```
 $ cd ~/workspace
 $ catkin_make
@@ -94,19 +94,19 @@ $ source ./devel/setup.bash
 $ roslaunch openni2_launch lipsedge_T235.launch
 ```
 
-## Launch rqt viewer
+## Launch rqt image view
 
-Connect LIPSedge camera to your host PC and use rqt to view stream topics.
+Connect LIPSedge™ T235 camera to your host PC and use rqt to view stream topics.
 ```
 $ cd ~/workspace
 $ rqt_image_view
 ```
 
 * Select topic */camera/depth/image* in rqt
-<img src="Screenshot_rqt_depth_image.png" width="300">
+<img src="t235_rqt_image_view_topic_depth_image.png" width="400">
 
 * Select topic */camera/rgb/image_raw* in rqt
-<img src="Screenshot_rqt_rgb_image_raw.png" width="300">
+<img src="t235_rqt_image_view_topic_rgb_image_raw.png" width="400">
 
 #### OR you can try image_view if you got problem with running rqt.
 
