@@ -19,9 +19,9 @@
 # Check if user is root/running with sudo
 if [ "`whoami`" != root ]; then
     echo ""
-    echo Need sudo permission to continue installation:
-    sudo "$0" "$@"
-    exit $?
+    echo NOTICE: Need sudo permission for following installation.
+    #sudo "$0" "$@"
+    #exit $?
 fi
 
 #SCRIPT_PATH=`pwd`
@@ -69,8 +69,8 @@ fi
 function main() {
   #install driver to /usr/lib/OpenNI2/Drivers if found
   if [ -d $LIB_LD/OpenNI2/Drivers ]; then
-    [ -e $USR_LIB/OpenNI2/Drivers/libLIPSedge-${DEVICE}.so.0 ] && rm -f $USR_LIB/OpenNI2/Drivers/libLIPSedge-${DEVICE}.so.0
-    ln -sf $SDK_ROOT/OpenNI2/Drivers/libLIPSedge-${DEVICE}.so $LIB_LD/OpenNI2/Drivers/libLIPSedge-${DEVICE}.so.0
+    [ -e $LIB_LD/OpenNI2/Drivers/libLIPSedge-${DEVICE}.so.0 ] && sudo rm -f $LIB_LD/OpenNI2/Drivers/libLIPSedge-${DEVICE}.so.0
+    sudo ln -sf $SDK_ROOT/OpenNI2/Drivers/libLIPSedge-${DEVICE}.so $LIB_LD/OpenNI2/Drivers/libLIPSedge-${DEVICE}.so.0
     # No links to OpenNI2/Drivers or calib/ after SDK v0.9.6.2
     #ln -sf $SDK_ROOT/OpenNI2 OpenNI2
     #ln -sf $SDK_ROOT/calib calib

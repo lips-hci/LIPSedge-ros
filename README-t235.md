@@ -69,6 +69,8 @@ $ cd ~/workspace/src
 $ cd LIPSedge-ros1
 $ ./scripts/install_ros_T235_ubuntu20_x64.sh
 
+NOTICE: Need sudo permission for following installation.
+
 SDK path found: /home/chengt/test/LIPSedge-T225-RGBD-SDK-Linux-amd64-2.4.4.3_v0.9.6.3/Redist
 
 Creating lib,calib,OpenNI2 links in /lib
@@ -96,7 +98,7 @@ $ roslaunch openni2_launch lipsedge_T235.launch
 
 Connect LIPSedge camera to your host PC and use rqt to view stream topics.
 ```
-$ cd ~/LIPSToF_ws
+$ cd ~/workspace
 $ rqt_image_view
 ```
 
