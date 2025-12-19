@@ -1,6 +1,6 @@
 # ROS wrapper for OpenNI2 using LIPSedge™ camera T235
 
-We have tested LIPSedge™ T235 camera in [ros1 noetic](https://hub.docker.com/r/osrf/ros/tags?name=noetic) docker container.
+We have tested LIPSedge™ T235 camera in [ros noetic](https://hub.docker.com/r/osrf/ros/tags?name=noetic) docker container.
 
 For other distro, we are not sure, if you have any request or need any support. Please mail to [LIPS](https://www.lips-hci.com/contact).
 
@@ -49,7 +49,7 @@ Clone this repository and build it in ROS environment
 $ mkdir -p ~/workspace/src
 $ cd ~/workspace/src
 $ catkin_init_workspace
-$ git clone https://github.com/lips-hci/LIPSedge-ros1
+$ git clone https://github.com/lips-hci/LIPSedge-ros
 ```
 
 #### Setup OpenNI Dev Environment
@@ -66,7 +66,7 @@ $ source OpenNIDevEnvironment
 Run helper script in wrapper source to create virtual link to LIPSedge™ camera driver.
 ```
 $ cd ~/workspace/src
-$ cd LIPSedge-ros1
+$ cd LIPSedge-ros
 $ ./scripts/install_ros_T235_ubuntu20_x64.sh
 
 NOTICE: Need sudo permission for following installation.
